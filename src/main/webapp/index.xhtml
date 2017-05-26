@@ -23,7 +23,9 @@
 					<h:inputSecret value="#{userBean.password}"></h:inputSecret>
 					
 					<h:commandButton type="submit" value="Login"
+					
 						action="#{userBean.login}"></h:commandButton>
+						<h:button type="reset" value="cancel"></h:button>
 				</h:panelGrid>
 			     </h:form>					
 				</p:tab>
@@ -63,7 +65,7 @@
        					 <h:inputText value="#{userBean.confidentialCode}" label="Confidential Code" />
        					 <h:commandButton type="submit" value="SignUp"
 						action="#{userBean.persistUser()}"></h:commandButton>
-						
+						 <h:button type="reset" value="cancel"></h:button>
 						
 						
 						

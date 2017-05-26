@@ -178,7 +178,7 @@ public class UserBean implements Serializable {
 		user.setEmail(getEmail());
 		
 		userService.persistUser(user);
-		message ="Successfully signup.";
+		message ="Welcome "+ getName();
 		return "success";
 		
 	}

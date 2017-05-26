@@ -55,6 +55,7 @@
         <p:menuitem value="Quit" url="/index.xhtml" icon="ui-icon-close" />
  
         <f:facet name="options">
+            <p:outputLabel value="#{userBean.message}"></p:outputLabel>
             <p:inputText style="margin-right:10px" placeholder="Search"/>
             <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
         </f:facet>
