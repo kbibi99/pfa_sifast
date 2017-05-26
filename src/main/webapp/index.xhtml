@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head >
+</h:head>
+<h:body>
+	<center>
+		
+		<p:accordionPanel style="bloc">
+			 	
+			 <p:tab title="Login">
+			    <h:form> 
+			    <h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel for="#{userBean.username}" value="UserName" />
+					<h:inputText value="#{userBean.username}" label="UserName"></h:inputText>
+					<h:outputLabel for="#{userBean.password}" value="Password" />
+					<h:inputSecret value="#{userBean.password}"></h:inputSecret>
+					
+					<h:commandButton type="submit" value="Login"
+						action="#{userBean.login}"></h:commandButton>
+				</h:panelGrid>
+			     </h:form>					
+				</p:tab>
+				<p:tab title="Sign up">
+					<h:form>
+				    <h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel for="#{userBean.name}" value="First Name" />
+						<h:inputText value="#{userBean.name}" label="First Name" />
+						<h:outputLabel for="#{userBean.surname}" value="Second Name" />
+						<h:inputText value="#{userBean.surname}" label="Second dName" />
+						<h:outputLabel for="#{userBean.username}" value="UserName" />
+						<h:inputText value="#{userBean.username}" label="UserName " />
+					</h:panelGrid>
+					</h:form>
+				</p:tab>
+			</p:accordionPanel>
+		<div>
+			<h:messages></h:messages>
+		</div>
+	</center>
+</h:body>
+</html>
