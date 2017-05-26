@@ -46,17 +46,19 @@
 						<h:inputText value="#{userBean.mobilePhone}" label="Mobile Phone Number" />
 						<h:outputLabel for="#{userBean.birthDate}" value="Birthday " />
 						<p:calendar value="#{userBean.birthDate}" ></p:calendar>
-						<h:inputText value="#{userBean.adress}" label="Adress" />
 						<h:outputLabel for="#{userBean.adress}" value="Adress" />
-						<h:inputText value="#{userBean.cin}" label="Cin" />
+						<h:inputText value="#{userBean.adress}" label="Adress" />
 						<h:outputLabel for="#{userBean.cin}" value="Cin" />
-						<h:inputText value="#{userBean.gender}" label="Gender" />
+						<h:inputText value="#{userBean.cin}" label="Cin" />
+						
+						<h:outputLabel  value="#{userBean.gender}" label="Gender" />
 						<p:selectOneRadio  value="#{userBean.gender}" for="#{userBean.gender}">
             				<f:selectItem itemLabel="Male" itemValue="M" />
            				    <f:selectItem itemLabel="Female" itemValue="F" />
        					 </p:selectOneRadio>
+       					 <h:outputLabel for="#{userBean.confidentialCode}" value="Confidential Code" />
+       					 
        					 <h:inputText value="#{userBean.confidentialCode}" label="Confidential Code" />
-						<h:outputLabel for="#{userBean.confidentialCode}" value="Confidential Code" />
        					 <h:commandButton type="submit" value="SignUp"
 						action="#{userBean.persistUser()}"></h:commandButton>
 						
