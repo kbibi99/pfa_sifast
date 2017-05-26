@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
