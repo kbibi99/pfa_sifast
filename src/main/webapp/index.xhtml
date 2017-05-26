@@ -36,6 +36,34 @@
 						<h:inputText value="#{userBean.surname}" label="Second dName" />
 						<h:outputLabel for="#{userBean.username}" value="UserName" />
 						<h:inputText value="#{userBean.username}" label="UserName " />
+						<h:outputLabel for="#{userBean.password}" value="Password" />
+						<h:inputSecret  value="#{userBean.password}" label="Password " />
+						<h:outputLabel for="#{userBean.email}" value="Email" />
+						<h:inputText value="#{userBean.email}" label="Email" />
+						<h:outputLabel for="#{userBean.phone}" value="Phone Number" />
+						<h:inputText value="#{userBean.phone}" label="Phone Number" />
+						<h:outputLabel for="#{userBean.mobilePhone}" value="Mobile Phone Number" />
+						<h:inputText value="#{userBean.mobilePhone}" label="Mobile Phone Number" />
+						<h:outputLabel for="#{userBean.birthDate}" value="Birthday " />
+						<p:calendar value="#{userBean.birthDate}" ></p:calendar>
+						<h:inputText value="#{userBean.adress}" label="Adress" />
+						<h:outputLabel for="#{userBean.adress}" value="Adress" />
+						<h:inputText value="#{userBean.cin}" label="Cin" />
+						<h:outputLabel for="#{userBean.cin}" value="Cin" />
+						<h:inputText value="#{userBean.gender}" label="Gender" />
+						<p:selectOneRadio  value="#{userBean.gender}" for="#{userBean.gender}">
+            				<f:selectItem itemLabel="Male" itemValue="M" />
+           				    <f:selectItem itemLabel="Female" itemValue="F" />
+       					 </p:selectOneRadio>
+       					 <h:inputText value="#{userBean.confidentialCode}" label="Confidential Code" />
+						<h:outputLabel for="#{userBean.confidentialCode}" value="Confidential Code" />
+       					 <h:commandButton type="submit" value="SignUp"
+						action="#{userBean.persistUser()}"></h:commandButton>
+						
+						
+						
+						
+						
 					</h:panelGrid>
 					</h:form>
 				</p:tab>

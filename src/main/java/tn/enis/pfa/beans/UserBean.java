@@ -162,12 +162,24 @@ public class UserBean implements Serializable {
 	
 	
 	
-/*	public void persistUser(){
+	public void persistUser(){
 		User user = new User();
 		user.setName(getName());
 		user.setSurname(getSurname());
+		user.setUsername(getUsername());
+		user.setPassword(getPassword());
+		user.setCin(getCin());
+		user.setBirthDate(getBirthDate());
+		user.setGender(getGender());
+		user.setAdress(getAdress());
+		user.setConfidentialCode(getConfidentialCode());
+		user.setPhone(getPhone());
+		user.setMobilePhone(getMobilePhone());
+		user.setEmail(getEmail());
+		
 		userService.persistUser(user);
-	}*/
+		
+	}
 	
 	public String getMessage() {
 		return message;
