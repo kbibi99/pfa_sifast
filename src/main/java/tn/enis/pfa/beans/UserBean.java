@@ -162,7 +162,7 @@ public class UserBean implements Serializable {
 	
 	
 	
-	public void persistUser(){
+	public String persistUser(){
 		User user = new User();
 		user.setName(getName());
 		user.setSurname(getSurname());
@@ -178,6 +178,8 @@ public class UserBean implements Serializable {
 		user.setEmail(getEmail());
 		
 		userService.persistUser(user);
+		message ="Successfully signup.";
+		return "success";
 		
 	}
 	
