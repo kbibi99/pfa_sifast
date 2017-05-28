@@ -10,15 +10,24 @@
 <h:head >
 </h:head>
 <h:body>
-	<center>
+	
 		
-		<p:accordionPanel style="bloc">
+		<p:accordionPanel style="widht:250px">
 			 	
 			 <p:tab title="Login">
 			    <h:form> 
 			    <h:panelGrid columns="2" cellpadding="5">
 					<h:outputLabel for="#{userBean.username}" value="UserName" />
-					<h:inputText value="#{userBean.username}" label="UserName"></h:inputText>
+					<p:inputText id="usernamelogin"
+					    value="#{userBean.username}" 
+						label="UserName"
+						required="true"
+						requiredMessage="UserName is required"
+      				    validatorMessage="UsesrName should be of length from 5 to 15 chars"
+					 >
+					 <f:validateLength minimum="5" maximum="20"></f:validateLength>
+					 </p:inputText>
+					 <p:message></p:message>
 					<h:outputLabel for="#{userBean.password}" value="Password" />
 					<h:inputSecret value="#{userBean.password}"></h:inputSecret>
 					
@@ -77,6 +86,6 @@
 		<div>
 			<h:messages></h:messages>
 		</div>
-	</center>
+	
 </h:body>
 </html>
