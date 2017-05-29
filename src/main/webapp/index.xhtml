@@ -26,6 +26,7 @@
 						<f:validateLength minimum="5" maximum="20"></f:validateLength>
 					</p:inputText>
 					<p:message for="usernamelogin"></p:message>
+					<br />
 					
 					
 					<p:outputLabel for="#{userBean.password}" value="Password" />
@@ -34,6 +35,7 @@
 					requiredMessage="Password is required"
 					></p:inputSecret>
 					<p:message for="passwordlogin"></p:message>
+					<br />
 
 					<p:commandButton type="submit" value="Login"
 						action="#{userBean.login}"></p:commandButton>
@@ -53,6 +55,7 @@
 						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
 					 </p:inputText>
 					 <p:message for="name"></p:message>
+					<br />
 					
 					<p:outputLabel for="#{userBean.surname}" value="Second Name" />
 					<p:inputText id="surname" value="#{userBean.surname}" label="Second Name" 
@@ -63,12 +66,20 @@
 						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
 					</p:inputText>
 					<p:message for="surname"></p:message>
+					<br />
 					
 					<p:outputLabel for="#{userBean.username}" value="UserName" />
-					<p:inputText value="#{userBean.username}" label="UserName " />
+					<p:inputText id="username" value="#{userBean.username}" label="UserName "
+					required="true"
+					requiredMessage="UserName is required"
+					validatorMessage="UserName should be of maximum length 20 chars"> 
+					
+					<f:validateLength maximum="20"></f:validateLength>
+					</p:inputText>
+					<br />
 					
 					<p:outputLabel for="#{userBean.password}" value="Password" />
-					<p:inputSecret value="#{userBean.password}" label="Password " />
+					<p:inputSecret id="value=" value="#{userBean.password}" label="Password " />
 					
 					<p:outputLabel for="#{userBean.email}" value="Email" />
 					<p:inputText value="#{userBean.email}" label="Email" />
