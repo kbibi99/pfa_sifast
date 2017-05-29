@@ -12,12 +12,12 @@
 <h:body>
 
 
-	<p:accordionPanel>
+	<p:accordionPanel >
 
 		<p:tab title="Login">
 			<h:form>
-				<p:panelGrid columns="2" cellpadding="5">
-
+				<h:panelGrid columns="2" cellpadding="5">
+				
 					<h:outputLabel for="#{userBean.username}" value="UserName" />
 					<p:inputText id="usernamelogin" value="#{userBean.username}"
 						label="UserName" required="true"
@@ -26,81 +26,96 @@
 						<f:validateLength minimum="5" maximum="20"></f:validateLength>
 					</p:inputText>
 					<p:message for="usernamelogin"></p:message>
-					<br />
-
-
+					<br/>
+					
 					<h:outputLabel for="#{userBean.password}" value="Password" />
-					<p:password id="passwordlogin" value="#{userBean.password}"
-						required="true" requiredMessage="Password is required"></p:password>
+					<h:inputSecret id="passwordlogin" value="#{userBean.password}"
+					required="true"
+					requiredMessage="Password is required"
+					></h:inputSecret>
 					<p:message for="passwordlogin"></p:message>
-					<br />
+					<br/>
 
-					<p:commandButton type="submit" value="Login"
-						action="#{userBean.login}"></p:commandButton>
-					<p:button type="reset" value="cancel"></p:button>
-				</p:panelGrid>
+					<h:commandButton type="submit" value="Login"
+						action="#{userBean.login}"></h:commandButton>
+					<h:button type="reset" value="cancel"></h:button>
+				</h:panelGrid>
 			</h:form>
 		</p:tab>
 		<p:tab title="Sign up">
 			<h:form>
-				<p:panelGrid columns="2" cellpadding="5">
+				<h:panelGrid columns="2" cellpadding="5">
 					<h:outputLabel for="#{userBean.name}" value="First Name" />
 					<p:inputText id="name" value="#{userBean.name}" label="First Name"
-						required="true" requiredMessage="Name is required"
-						validatorMessage="Name should be of maximum length 20 chars">
-						<f:validateLength maximum="20"></f:validateLength>
-						<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
-					</p:inputText>
-					<p:message for="name"></p:message>
-					<br />
-
+					required="true"
+					requiredMessage="Name is required"
+					validatorMessage="Name should be of maximum length 20 chars"> 
+						 <f:validateLength maximum="20"></f:validateLength>
+						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+					 </p:inputText>
+					 <p:message for="name"></p:message>
+					 <br />
+					
 					<h:outputLabel for="#{userBean.surname}" value="Second Name" />
-					<p:inputText id="surname" value="#{userBean.surname}"
-						label="Second Name" required="true"
-						requiredMessage="SurName is required"
-						validatorMessage="SurName should be of maximum length 20 chars">
-						<f:validateLength maximum="20"></f:validateLength>
-						<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+					<p:inputText id="surname" value="#{userBean.surname}" label="Second Name" 
+					required="true"
+					requiredMessage="SurName is required"
+					validatorMessage="SurName should be of maximum length 20 chars"> 
+						 <f:validateLength maximum="20"></f:validateLength>
+						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
 					</p:inputText>
 					<p:message for="surname"></p:message>
 					<br />
-
+					
 					<h:outputLabel for="#{userBean.username}" value="UserName" />
-					<p:inputText id="username" value="#{userBean.username}"
-						label="UserName " required="true"
-						requiredMessage="UserName is required"
-						validatorMessage="UserName should be of maximum length 20 chars">
-
+					<p:inputText id="username" value="#{userBean.username}" label="UserName " 
+					required="true"
+					requiredMessage="Username is required"
+					validatorMessage="UserName should be of maximum length 20 chars"> 	
 						<f:validateLength maximum="20"></f:validateLength>
 					</p:inputText>
 					<p:message for="username"></p:message>
 					<br />
-
+					
 					<h:outputLabel for="#{userBean.password}" value="Password" />
-					<p:password id="password" value="#{userBean.password}"
-						label="Password " />
-
+					<p:password id="password" value="#{userBean.password}" label="Password " 
+					required="true"
+					requiredMessage="Password is required"
+					validatorMessage="Password should be of length from 8 to 20 chars"> 	
+						<f:validateLength minimum="8" maximum="20"></f:validateLength>
+					</p:password>
+					<p:message for="password"></p:message>
+					<br />
+					
 					<h:outputLabel for="#{userBean.email}" value="Email" />
-					<p:inputText value="#{userBean.email}" label="Email" />
-
+					<p:inputText id="email" value="#{userBean.email}" label="Email" 
+					required="true"
+					requiredMessage="Email is required"
+					validatorMessage="Invalid email format"
+					>
+						<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+					</p:inputText>
+					<p:message for="email"></p:message>
+					<br />
+					
 					<h:outputLabel for="#{userBean.phone}" value="Phone Number" />
 					<p:inputText value="#{userBean.phone}" label="Phone Number" />
-
+					
 					<h:outputLabel for="#{userBean.mobilePhone}"
 						value="Mobile Phone Number" />
 					<p:inputText value="#{userBean.mobilePhone}"
 						label="Mobile Phone Number" />
-
+					
 					<h:outputLabel for="#{userBean.birthDate}" value="Birthday " />
 					<p:calendar value="#{userBean.birthDate}" pattern="yyyy-MM-dd">
 					</p:calendar>
-
+					
 					<h:outputLabel for="#{userBean.adress}" value="Adress" />
 					<p:inputText value="#{userBean.adress}" label="Adress" />
-
+					
 					<h:outputLabel for="#{userBean.cin}" value="Cin" />
 					<p:inputText value="#{userBean.cin}" label="Cin" />
-
+					
 
 					<h:outputLabel for="#{userBean.gender}" value="Gender" />
 					<p:selectOneRadio Label="Gender" value="#{userBean.gender}"
@@ -108,18 +123,18 @@
 						<f:selectItem itemLabel="Male" itemValue="M" />
 						<f:selectItem itemLabel="Female" itemValue="F" />
 					</p:selectOneRadio>
-
+					
 					<h:outputLabel for="#{userBean.confidentialCode}"
 						value="Confidential Code" />
 
 					<p:inputText value="#{userBean.confidentialCode}"
 						label="Confidential Code" />
+						
+					<h:commandButton type="submit" value="SignUp"
+						action="#{userBean.persistUser()}"></h:commandButton>
+					<h:button type="reset" value="cancel"></h:button>
 
-					<p:commandButton type="submit" value="SignUp"
-						action="#{userBean.persistUser()}"></p:commandButton>
-					<p:button type="reset" value="cancel"></p:button>
-
-				</p:panelGrid>
+				</h:panelGrid>
 			</h:form>
 		</p:tab>
 	</p:accordionPanel>
