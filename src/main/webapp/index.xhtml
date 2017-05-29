@@ -45,40 +45,40 @@
 			<h:form>
 				<h:panelGrid columns="2" cellpadding="5">
 					<h:outputLabel for="#{userBean.name}" value="First Name" />
-					<h:inputText id="name" value="#{userBean.name}" label="First Name"
+					<p:inputText id="name" value="#{userBean.name}" label="First Name"
 					required="true"
 					requiredMessage="Name is required"
 					validatorMessage="Name should be of maximum length 20 chars"> 
 						 <f:validateLength maximum="20"></f:validateLength>
 						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
-					 </h:inputText>
+					 </p:inputText>
 					 <p:message for="name"></p:message>
 					
 					<h:outputLabel for="#{userBean.surname}" value="Second Name" />
-					<h:inputText id="surname" value="#{userBean.surname}" label="Second Name" 
+					<p:inputText id="surname" value="#{userBean.surname}" label="Second Name" 
 					required="true"
 					requiredMessage="SurName is required"
 					validatorMessage="SurName should be of maximum length 20 chars"> 
 						 <f:validateLength maximum="20"></f:validateLength>
 						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
-					</h:inputText>
+					</p:inputText>
 					<p:message for="surname"></p:message>
 					
 					<h:outputLabel for="#{userBean.username}" value="UserName" />
-					<h:inputText value="#{userBean.username}" label="UserName " />
+					<p:inputText value="#{userBean.username}" label="UserName " />
 					
 					<h:outputLabel for="#{userBean.password}" value="Password" />
 					<h:inputSecret value="#{userBean.password}" label="Password " />
 					
 					<h:outputLabel for="#{userBean.email}" value="Email" />
-					<h:inputText value="#{userBean.email}" label="Email" />
+					<p:inputText value="#{userBean.email}" label="Email" />
 					
 					<h:outputLabel for="#{userBean.phone}" value="Phone Number" />
-					<h:inputText value="#{userBean.phone}" label="Phone Number" />
+					<p:inputText value="#{userBean.phone}" label="Phone Number" />
 					
 					<h:outputLabel for="#{userBean.mobilePhone}"
 						value="Mobile Phone Number" />
-					<h:inputText value="#{userBean.mobilePhone}"
+					<p:inputText value="#{userBean.mobilePhone}"
 						label="Mobile Phone Number" />
 					
 					<h:outputLabel for="#{userBean.birthDate}" value="Birthday " />
@@ -86,10 +86,10 @@
 					</p:calendar>
 					
 					<h:outputLabel for="#{userBean.adress}" value="Adress" />
-					<h:inputText value="#{userBean.adress}" label="Adress" />
+					<p:inputText value="#{userBean.adress}" label="Adress" />
 					
 					<h:outputLabel for="#{userBean.cin}" value="Cin" />
-					<h:inputText value="#{userBean.cin}" label="Cin" />
+					<p:inputText value="#{userBean.cin}" label="Cin" />
 					
 
 					<h:outputLabel for="#{userBean.gender}" value="Gender" />
@@ -102,7 +102,7 @@
 					<h:outputLabel for="#{userBean.confidentialCode}"
 						value="Confidential Code" />
 
-					<h:inputText value="#{userBean.confidentialCode}"
+					<p:inputText value="#{userBean.confidentialCode}"
 						label="Confidential Code" />
 						
 					<h:commandButton type="submit" value="SignUp"
