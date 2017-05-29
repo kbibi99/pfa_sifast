@@ -18,7 +18,7 @@
 			<h:form>
 				<p:panelGrid columns="2" cellpadding="5">
 
-					<p:outputLabel for="#{userBean.username}" value="UserName" />
+					<h:outputLabel for="#{userBean.username}" value="UserName" />
 					<p:inputText id="usernamelogin" value="#{userBean.username}"
 						label="UserName" required="true"
 						requiredMessage="UserName is required"
@@ -29,7 +29,7 @@
 					<br />
 
 
-					<p:outputLabel for="#{userBean.password}" value="Password" />
+					<h:outputLabel for="#{userBean.password}" value="Password" />
 					<p:password id="passwordlogin" value="#{userBean.password}"
 						required="true" requiredMessage="Password is required"></p:password>
 					<p:message for="passwordlogin"></p:message>
@@ -44,7 +44,7 @@
 		<p:tab title="Sign up">
 			<h:form>
 				<p:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="#{userBean.name}" value="First Name" />
+					<h:outputLabel for="#{userBean.name}" value="First Name" />
 					<p:inputText id="name" value="#{userBean.name}" label="First Name"
 						required="true" requiredMessage="Name is required"
 						validatorMessage="Name should be of maximum length 20 chars">
@@ -54,7 +54,7 @@
 					<p:message for="name"></p:message>
 					<br />
 
-					<p:outputLabel for="#{userBean.surname}" value="Second Name" />
+					<h:outputLabel for="#{userBean.surname}" value="Second Name" />
 					<p:inputText id="surname" value="#{userBean.surname}"
 						label="Second Name" required="true"
 						requiredMessage="SurName is required"
@@ -65,7 +65,7 @@
 					<p:message for="surname"></p:message>
 					<br />
 
-					<p:outputLabel for="#{userBean.username}" value="UserName" />
+					<h:outputLabel for="#{userBean.username}" value="UserName" />
 					<p:inputText id="username" value="#{userBean.username}"
 						label="UserName " required="true"
 						requiredMessage="UserName is required"
@@ -76,40 +76,40 @@
 					<p:message for="username"></p:message>
 					<br />
 
-					<p:outputLabel for="#{userBean.password}" value="Password" />
+					<h:outputLabel for="#{userBean.password}" value="Password" />
 					<p:password id="password" value="#{userBean.password}"
 						label="Password " />
 
-					<p:outputLabel for="#{userBean.email}" value="Email" />
+					<h:outputLabel for="#{userBean.email}" value="Email" />
 					<p:inputText value="#{userBean.email}" label="Email" />
 
-					<p:outputLabel for="#{userBean.phone}" value="Phone Number" />
+					<h:outputLabel for="#{userBean.phone}" value="Phone Number" />
 					<p:inputText value="#{userBean.phone}" label="Phone Number" />
 
-					<p:outputLabel for="#{userBean.mobilePhone}"
+					<h:outputLabel for="#{userBean.mobilePhone}"
 						value="Mobile Phone Number" />
 					<p:inputText value="#{userBean.mobilePhone}"
 						label="Mobile Phone Number" />
 
-					<p:outputLabel for="#{userBean.birthDate}" value="Birthday " />
+					<h:outputLabel for="#{userBean.birthDate}" value="Birthday " />
 					<p:calendar value="#{userBean.birthDate}" pattern="yyyy-MM-dd">
 					</p:calendar>
 
-					<p:outputLabel for="#{userBean.adress}" value="Adress" />
+					<h:outputLabel for="#{userBean.adress}" value="Adress" />
 					<p:inputText value="#{userBean.adress}" label="Adress" />
 
-					<p:outputLabel for="#{userBean.cin}" value="Cin" />
+					<h:outputLabel for="#{userBean.cin}" value="Cin" />
 					<p:inputText value="#{userBean.cin}" label="Cin" />
 
 
-					<p:outputLabel for="#{userBean.gender}" value="Gender" />
+					<h:outputLabel for="#{userBean.gender}" value="Gender" />
 					<p:selectOneRadio Label="Gender" value="#{userBean.gender}"
 						for="#{userBean.gender}">
 						<f:selectItem itemLabel="Male" itemValue="M" />
 						<f:selectItem itemLabel="Female" itemValue="F" />
 					</p:selectOneRadio>
 
-					<p:outputLabel for="#{userBean.confidentialCode}"
+					<h:outputLabel for="#{userBean.confidentialCode}"
 						value="Confidential Code" />
 
 					<p:inputText value="#{userBean.confidentialCode}"
