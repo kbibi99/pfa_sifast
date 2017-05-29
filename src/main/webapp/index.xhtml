@@ -26,7 +26,7 @@
 						<f:validateLength minimum="5" maximum="20"></f:validateLength>
 					</p:inputText>
 					<p:message for="usernamelogin"></p:message>
-					
+					<br/>
 					
 					<h:outputLabel for="#{userBean.password}" value="Password" />
 					<h:inputSecret id="passwordlogin" value="#{userBean.password}"
@@ -34,6 +34,7 @@
 					requiredMessage="Password is required"
 					></h:inputSecret>
 					<p:message for="passwordlogin"></p:message>
+					<br/>
 
 					<h:commandButton type="submit" value="Login"
 						action="#{userBean.login}"></h:commandButton>
@@ -53,6 +54,7 @@
 						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
 					 </p:inputText>
 					 <p:message for="name"></p:message>
+					 <br />
 					
 					<h:outputLabel for="#{userBean.surname}" value="Second Name" />
 					<p:inputText id="surname" value="#{userBean.surname}" label="Second Name" 
