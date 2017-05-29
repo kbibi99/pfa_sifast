@@ -6,86 +6,114 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
-<h:head >
+
+<h:head>
 </h:head>
 <h:body>
-	
-		
-		<p:accordionPanel style="widht:250px">
-			 	
-			 <p:tab title="Login">
-			    <h:form> 
-			    <h:panelGrid columns="2" cellpadding="5">
+
+
+	<p:accordionPanel >
+
+		<p:tab title="Login">
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="5">
+				
 					<h:outputLabel for="#{userBean.username}" value="UserName" />
-					<p:inputText id="usernamelogin"
-					    value="#{userBean.username}" 
-						label="UserName"
-						required="true"
+					<p:inputText id="usernamelogin" value="#{userBean.username}"
+						label="UserName" required="true"
 						requiredMessage="UserName is required"
-      				    validatorMessage="UsesrName should be of length from 5 to 15 chars"
-					 >
-					 <f:validateLength minimum="5" maximum="20"></f:validateLength>
-					 </p:inputText>
-					 <p:message for="usernamelogin"></p:message>
+						validatorMessage="UserName should be of length from 5 to 15 chars">
+						<f:validateLength minimum="5" maximum="20"></f:validateLength>
+					</p:inputText>
+					<p:message for="usernamelogin"></p:message>
+					
+					
 					<h:outputLabel for="#{userBean.password}" value="Password" />
-					<h:inputSecret value="#{userBean.password}"></h:inputSecret>
-					
+					<h:inputSecret id="passwordlogin" value="#{userBean.password}"
+					required="true"
+					requiredMessage="Password is required"
+					></h:inputSecret>
+					<p:message for="passwordlogin"></p:message>
+
 					<h:commandButton type="submit" value="Login"
-					
 						action="#{userBean.login}"></h:commandButton>
-						<h:button type="reset" value="cancel"></h:button>
+					<h:button type="reset" value="cancel"></h:button>
 				</h:panelGrid>
-			     </h:form>					
-				</p:tab>
-				<p:tab title="Sign up">
-					<h:form>
-				    <h:panelGrid columns="2" cellpadding="5">
-						<h:outputLabel for="#{userBean.name}" value="First Name" />
-						<h:inputText value="#{userBean.name}" label="First Name" />
-						<h:outputLabel for="#{userBean.surname}" value="Second Name" />
-						<h:inputText value="#{userBean.surname}" label="Second dName" />
-						<h:outputLabel for="#{userBean.username}" value="UserName" />
-						<h:inputText value="#{userBean.username}" label="UserName " />
-						<h:outputLabel for="#{userBean.password}" value="Password" />
-						<h:inputSecret  value="#{userBean.password}" label="Password " />
-						<h:outputLabel for="#{userBean.email}" value="Email" />
-						<h:inputText value="#{userBean.email}" label="Email" />
-						<h:outputLabel for="#{userBean.phone}" value="Phone Number" />
-						<h:inputText value="#{userBean.phone}" label="Phone Number" />
-						<h:outputLabel for="#{userBean.mobilePhone}" value="Mobile Phone Number" />
-						<h:inputText value="#{userBean.mobilePhone}" label="Mobile Phone Number" />
-						<h:outputLabel for="#{userBean.birthDate}" value="Birthday " />
-						<p:calendar value="#{userBean.birthDate}" pattern="yyyy-MM-dd" >
+			</h:form>
+		</p:tab>
+		<p:tab title="Sign up">
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel for="#{userBean.name}" value="First Name" />
+					<h:inputText id="name" value="#{userBean.name}" label="First Name"
+					required="true"
+					requiredMessage="Name is required"
+					validatorMessage="Name should be of maximum length 20 chars"> 
+						 <f:validateLength maximum="20"></f:validateLength>
+						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+					 </h:inputText>
+					 <p:message for="name"></p:message>
+					
+					<h:outputLabel for="#{userBean.surname}" value="Second Name" />
+					<h:inputText id="surname" value="#{userBean.surname}" label="Second Name" 
+					required="true"
+					requiredMessage="SurName is required"
+					validatorMessage="SurName should be of maximum length 20 chars"> 
+						 <f:validateLength maximum="20"></f:validateLength>
+						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+					</h:inputText>
+					<p:message for="surname"></p:message>
+					
+					<h:outputLabel for="#{userBean.username}" value="UserName" />
+					<h:inputText value="#{userBean.username}" label="UserName " />
+					
+					<h:outputLabel for="#{userBean.password}" value="Password" />
+					<h:inputSecret value="#{userBean.password}" label="Password " />
+					
+					<h:outputLabel for="#{userBean.email}" value="Email" />
+					<h:inputText value="#{userBean.email}" label="Email" />
+					
+					<h:outputLabel for="#{userBean.phone}" value="Phone Number" />
+					<h:inputText value="#{userBean.phone}" label="Phone Number" />
+					
+					<h:outputLabel for="#{userBean.mobilePhone}"
+						value="Mobile Phone Number" />
+					<h:inputText value="#{userBean.mobilePhone}"
+						label="Mobile Phone Number" />
+					
+					<h:outputLabel for="#{userBean.birthDate}" value="Birthday " />
+					<p:calendar value="#{userBean.birthDate}" pattern="yyyy-MM-dd">
+					</p:calendar>
+					
+					<h:outputLabel for="#{userBean.adress}" value="Adress" />
+					<h:inputText value="#{userBean.adress}" label="Adress" />
+					
+					<h:outputLabel for="#{userBean.cin}" value="Cin" />
+					<h:inputText value="#{userBean.cin}" label="Cin" />
+					
+
+					<h:outputLabel for="#{userBean.gender}" value="Gender" />
+					<p:selectOneRadio Label="Gender" value="#{userBean.gender}"
+						for="#{userBean.gender}">
+						<f:selectItem itemLabel="Male" itemValue="M" />
+						<f:selectItem itemLabel="Female" itemValue="F" />
+					</p:selectOneRadio>
+					
+					<h:outputLabel for="#{userBean.confidentialCode}"
+						value="Confidential Code" />
+
+					<h:inputText value="#{userBean.confidentialCode}"
+						label="Confidential Code" />
 						
-						</p:calendar>
-						<h:outputLabel for="#{userBean.adress}" value="Adress" />
-						<h:inputText value="#{userBean.adress}" label="Adress" />
-						<h:outputLabel for="#{userBean.cin}" value="Cin" />
-						<h:inputText value="#{userBean.cin}" label="Cin" />
-						
-						<h:outputLabel  for="#{userBean.gender}" value="Gender" />
-						<p:selectOneRadio Label="Gender" value="#{userBean.gender}" for="#{userBean.gender}">
-            				<f:selectItem itemLabel="Male" itemValue="M" />
-           				    <f:selectItem itemLabel="Female" itemValue="F" />
-       					 </p:selectOneRadio>
-       					 <h:outputLabel for="#{userBean.confidentialCode}" value="Confidential Code" />
-       					 
-       					 <h:inputText value="#{userBean.confidentialCode}" label="Confidential Code" />
-       					 <h:commandButton type="submit" value="SignUp"
+					<h:commandButton type="submit" value="SignUp"
 						action="#{userBean.persistUser()}"></h:commandButton>
-						 <h:button type="reset" value="cancel"></h:button>
-						
-						
-						
-						
-					</h:panelGrid>
-					</h:form>
-				</p:tab>
-			</p:accordionPanel>
-		<div>
-			<h:messages></h:messages>
-		</div>
-	
+					<h:button type="reset" value="cancel"></h:button>
+
+				</h:panelGrid>
+			</h:form>
+		</p:tab>
+	</p:accordionPanel>
+	<div></div>
+
 </h:body>
 </html>
