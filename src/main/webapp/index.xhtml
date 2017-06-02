@@ -126,6 +126,7 @@
 					<p:calendar id="date" required="true" requiredMessage="Birth date is required" value="#{userBean.birthDate}" pattern="yyyy-MM-dd">
 					</p:calendar>
 					<p:message for="date"></p:message>
+					<br/>
 					
 					<h:outputLabel for="#{userBean.adress}" value="Adress" />
 					<p:inputText id="adress" value="#{userBean.adress}" label="Adress" 
@@ -166,6 +167,7 @@
 					
 					</p:inputText>
 					<p:message for="cc" ></p:message>
+					<br />
 						
 					<h:commandButton type="submit" value="SignUp"
 						action="#{userBean.persistUser()}"></h:commandButton>

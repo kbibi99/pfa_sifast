@@ -3,9 +3,11 @@ package tn.enis.pfa.beans;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import tn.enis.pfa.model.User;
 import tn.enis.pfa.service.UserService;
@@ -200,8 +202,12 @@ public class UserBean implements Serializable {
     		return "success";
 		}
 		else{
-			message ="Wrong credentials.";
-    		return "login";
+			  FacesContext.getCurrentInstance().addMessage(
+	                    null,
+	                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+	                    "Invalid Login!",
+	                    "Please Try Again!"));
+	            return "login";
 		}
 			
 		
