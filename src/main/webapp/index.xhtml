@@ -8,176 +8,64 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+	<title>Login</title>
+	<link type="text/css" rel="stylesheet" href="Assets/css/style.css"></link>
 </h:head>
 <h:body>
 
+	<p:growl id="growl" life="2000" />
+	<h:form id="loginform">
+		<p:panel id="panel" header="Login"
+			style="width: 600px; margin: 100px auto;">
 
-	<p:accordionPanel >
+			<h:panelGrid style="width: 600px;" cellpadding="20" cellspacing="3" >
+				<p:row style="margin-bottom: 10px; margin-top: 10px">
+					<p:column style="width: 35%; text-align: center;">
+						<h:outputLabel for="#{userBean.username}" value="UserName" />
+					</p:column>
+					<p:column style="width: 35%; text-align: center;">
+						<p:inputText styleClass="input" id="usernamelogin"
+							value="#{userBean.username}" label="UserName" required="true"
+							requiredMessage="UserName is required"
+							validatorMessage="UserName should be of length from 5 to 15 chars">
+							<f:validateLength minimum="5" maximum="20"></f:validateLength>
+						</p:inputText>
+					</p:column>
+					<p:column style="width: 30%; text-align: center;">
+						<p:message for="usernamelogin"></p:message>
+					</p:column>
+				</p:row>
 
-		<p:tab title="Login">
-			<h:form>
-				<h:panelGrid columns="2" cellpadding="5">
-				
-					<h:outputLabel for="#{userBean.username}" value="UserName" />
-					<p:inputText id="usernamelogin" value="#{userBean.username}"
-						label="UserName" required="true"
-						requiredMessage="UserName is required"
-						validatorMessage="UserName should be of length from 5 to 15 chars">
-						<f:validateLength minimum="5" maximum="20"></f:validateLength>
-					</p:inputText>
-					<p:message for="usernamelogin"></p:message>
-					<br/>
-					
-					<h:outputLabel for="#{userBean.password}" value="Password" />
-					<h:inputSecret id="passwordlogin" value="#{userBean.password}"
-					required="true"
-					requiredMessage="Password is required"
-					></h:inputSecret>
-					<p:message for="passwordlogin"></p:message>
-					<br/>
+				<p:row style="margin-bottom: 10px; margin-top: 10px">
 
-					<h:commandButton type="submit" value="Login"
-						action="#{userBean.login}"></h:commandButton>
-					<h:button type="reset" value="cancel"></h:button>
-				</h:panelGrid>
-			</h:form>
-		</p:tab>
-		<p:tab title="Sign up">
-			<h:form>
-				<h:panelGrid columns="2" cellpadding="5">
-					<h:outputLabel for="#{userBean.name}" value="First Name" />
-					<p:inputText id="name" value="#{userBean.name}" label="First Name"
-					required="true"
-					requiredMessage="Name is required"
-					validatorMessage="Name should be of maximum length 20 chars"> 
-						 <f:validateLength maximum="20"></f:validateLength>
-						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
-					 </p:inputText>
-					 <p:message for="name"></p:message>
-					 <br />
-					
-					<h:outputLabel for="#{userBean.surname}" value="Second Name" />
-					<p:inputText id="surname" value="#{userBean.surname}" label="Second Name" 
-					required="true"
-					requiredMessage="SurName is required"
-					validatorMessage="SurName should be of maximum length 20 chars"> 
-						 <f:validateLength maximum="20"></f:validateLength>
-						 <f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
-					</p:inputText>
-					<p:message for="surname"></p:message>
-					<br />
-					
-					<h:outputLabel for="#{userBean.username}" value="UserName" />
-					<p:inputText id="username" value="#{userBean.username}" label="UserName " 
-					required="true"
-					requiredMessage="Username is required"
-					validatorMessage="UserName should be of maximum length 20 chars"> 	
-						<f:validateLength maximum="20"></f:validateLength>
-					</p:inputText>
-					<p:message for="username"></p:message>
-					<br />
-					
-					<h:outputLabel for="#{userBean.password}" value="Password" />
-					<p:password id="password" value="#{userBean.password}" label="Password " 
-					required="true"
-					requiredMessage="Password is required"
-					validatorMessage="Password should be of length from 8 to 20 chars"> 	
-						<f:validateLength minimum="8" maximum="20"></f:validateLength>
-					</p:password>
-					<p:message for="password"></p:message>
-					<br />
-					
-					<h:outputLabel for="#{userBean.email}" value="Email" />
-					<p:inputText id="email" value="#{userBean.email}" label="Email" 
-					required="true"
-					requiredMessage="Email is required"
-					validatorMessage="Invalid email format"
-					>
-						<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
-					</p:inputText>
-					<p:message for="email"></p:message>
-					<br />
-					
-					<h:outputLabel for="#{userBean.phone}" value="Phone Number" />
-					<p:inputText id="phone" value="#{userBean.phone}" label="Phone Number"
-					required="true"
-					requiredMessage="Phone is required"
-					validatorMessage="Invalid Phone Number" >
-					<f:validateLength minimum="8" maximum="8"></f:validateLength>
-					<f:validateRegex pattern="^[0-9]+" />
-					</p:inputText>
-					<p:message for="phone"></p:message>
-					<br />
-					
-					<h:outputLabel for="#{userBean.mobilePhone}"
-						value="Mobile Phone Number" />
-					<p:inputText id="mPhone" value="#{userBean.mobilePhone}"
-						label="Mobile Phone Number" 
-					required="true"
-					requiredMessage="Phone is required"
-					validatorMessage="Invalid Phone Number" >
-					<f:validateLength minimum="8" maximum="8"></f:validateLength>
-					<f:validateRegex pattern="^[0-9]+" />
-					</p:inputText>
-					<p:message for="mPhone"></p:message>
-					<br />
-					
-					<h:outputLabel for="#{userBean.birthDate}" value="Birthday " />
-					<p:calendar id="date" required="true" requiredMessage="Birth date is required" value="#{userBean.birthDate}" pattern="yyyy-MM-dd">
-					</p:calendar>
-					<p:message for="date"></p:message>
-					<br/>
-					
-					<h:outputLabel for="#{userBean.adress}" value="Adress" />
-					<p:inputText id="adress" value="#{userBean.adress}" label="Adress" 
-					required="true" 
-					requiredMessage="Adress is required"/>
-					<p:message for="adress"></p:message>
-					<br />
-					
-					<h:outputLabel for="#{userBean.cin}" value="Cin" />
-					<p:inputText id="cin" value="#{userBean.cin}" label="Cin" 
-					required="true"
-					requiredMessage="Cin is required" 
-					validatorMessage="Ivalid CIN" >
-					<f:validateLength minimum="8" maximum="8"></f:validateLength>
-					<f:validateRegex pattern="[0-9]+" />
-					</p:inputText>
-					<p:message for="cin"></p:message>
-					<br />
+					<p:column style="width: 35%; text-align: center;">
+						<h:outputLabel for="#{userBean.password}" value="Password" />
+					</p:column>
+					<p:column style="width: 35%; text-align: center;">
+						<p:password id="passwordlogin" styleClass="input"
+							value="#{userBean.password}" required="true"
+							requiredMessage="Password is required"></p:password>
+					</p:column>
+					<p:column style="width: 30%; text-align: center;">
+						<p:message for="passwordlogin"></p:message>
+					</p:column>
+				</p:row>
+				<p:row style="margin-bottom: 10px; margin-top: 10px">
 
-					<h:outputLabel for="#{userBean.gender}" value="Gender" />
-					<p:selectOneRadio id="gender" required="true" requiredMessage="Gender is required"
-					 Label="Gender" value="#{userBean.gender}"
-						for="#{userBean.gender}">
-						<f:selectItem itemLabel="Male" itemValue="M" />
-						<f:selectItem itemLabel="Female" itemValue="F" />
-					</p:selectOneRadio>
-					<p:message for="gender" ></p:message>
-					<br />
-					
-					<h:outputLabel for="#{userBean.confidentialCode}"
-						value="Confidential Code" />
+					<p:column style="width: 50%; text-align: center;">
+						<p:commandButton value="Login" styleClass="button"
+							icon="fa fa-sign-in" action="#{userBean.login}" ajax="false"></p:commandButton>
+					</p:column>
+					<p:column style="width: 50%; text-align: center;">
+						<p:button outcome="inscription" styleClass="button"
+							icon="fa fa-user-plus" value="Signup"></p:button>
+					</p:column>
+				</p:row>
 
-					<p:inputText id="cc" value="#{userBean.confidentialCode}"
-						label="Confidential Code" 
-						required="true"
-						requiredMessage="Confidential Code is required"
-						validatorMessage="Invalid Confidential Code ">
-					
-					</p:inputText>
-					<p:message for="cc" ></p:message>
-					<br />
-						
-					<h:commandButton type="submit" value="SignUp"
-						action="#{userBean.persistUser()}"></h:commandButton>
-					<h:button type="reset" value="cancel"></h:button>
+			</h:panelGrid>
 
-				</h:panelGrid>
-			</h:form>
-		</p:tab>
-	</p:accordionPanel>
-	<div></div>
+		</p:panel>
+	</h:form>
 
 </h:body>
 </html>

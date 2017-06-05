@@ -48,5 +48,24 @@ public class UserServiceImpl implements UserService{
 	public User login(String username, String password) {
 		return userDao.login(username, password);
 	}
+	
+	@Transactional
+	public User findUserByUserName(String Username) {
+		return userDao.findUserByUserName(Username);
+	}
+	
+	@Transactional
+	public User findUserByEmail(String email) {
+		return userDao.findUserByEmail(email);
+	}
+	
+	@Transactional
+	public User findUserByConfidetialCode(String cc) {
+		return userDao.findUserByConfidetialCode(cc);
+	}
+	@Transactional
+	public User findUserByCIN(String cin) {
+		return userDao.findUserByCIN(cin);
+	}
 
 }

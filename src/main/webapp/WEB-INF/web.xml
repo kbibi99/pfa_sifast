@@ -5,7 +5,16 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
 
-	<display-name>Simple</display-name>
+	<display-name>Cnam</display-name>
+	
+	<context-param>
+	<param-name>primefaces.THEME</param-name>
+	<param-value>cupertino</param-value>
+	</context-param>
+	<context-param>
+		<param-name>primefaces.FONT_AWESOME</param-name>
+		<param-value>true</param-value>
+	</context-param>
 
 
  <!-- Spring Context Configuration' s Path definition -->
@@ -15,6 +24,8 @@
       /WEB-INF/applicationContext.xml
       </param-value>
    </context-param>
+   
+   
    
 
    
@@ -39,10 +50,7 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
-	<context-param>
-		<param-name>primefaces.THEME</param-name>
-		<param-value>aristo</param-value>
-</context-param>
+
 
 	<!-- Welcome page -->
 	<welcome-file-list>

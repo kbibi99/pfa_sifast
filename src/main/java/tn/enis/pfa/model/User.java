@@ -104,7 +104,7 @@ public class User implements java.io.Serializable {
 	}
 
 
-	@Column(name = "username" , length = 50 , nullable = false)
+	@Column(name = "username", unique = true , length = 50 , nullable = false)
 	public String getUsername() {
 		return username;
 	}
@@ -116,7 +116,7 @@ public class User implements java.io.Serializable {
 	}
 
 
-	@Column(name = "email" , length = 50 , nullable = false)
+	@Column(name = "email" , unique = true ,length = 50 , nullable = false)
 	public String getEmail() {
 		return email;
 	}
