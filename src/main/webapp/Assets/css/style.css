@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+.input{
+	width: 250px;
+	padding-right: 15px;
+	margin-left: 15px
+}
+
+.button {
+    margin-left: 80px;
+
+}

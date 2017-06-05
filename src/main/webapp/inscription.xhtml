@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:head>
+	<title>Signup</title>
+	<link type="text/css" rel="stylesheet" href="Assets/css/style.css"></link>
+</h:head>
+<h:body>
+
+	<h:form id="signupform">
+		<p:growl id="usernamegrowl" life="20000" />
+
+		<p:panel id="panel" header="Signup"
+			style="width: 600px; margin: 100px auto;">
+			<h:panelGrid columns="2" layout="grid">
+			
+				<h:outputLabel for="#{userBean.name}" value="First Name" />
+				<p:inputText styleClass="input" id="name" value="#{userBean.name}"
+					label="First Name" required="true"
+					requiredMessage="Name is required"
+					validatorMessage="Name should be of maximum length 20 chars">
+					<f:validateLength maximum="20"></f:validateLength>
+					<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+				</p:inputText>
+				<p:message for="name"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.surname}" value="Second Name" />
+				<p:inputText styleClass="input" id="surname"
+					value="#{userBean.surname}" label="Second Name" required="true"
+					requiredMessage="Second Name is required"
+					validatorMessage="Second Name should be of maximum length 20 chars">
+					<f:validateLength maximum="20"></f:validateLength>
+					<f:validateRegex pattern="[a-zA-Z]+"></f:validateRegex>
+				</p:inputText>
+				<p:message for="surname"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.username}" value="UserName" />
+				<p:inputText styleClass="input" id="username"
+					value="#{userBean.username}" label="UserName " required="true"
+					requiredMessage="Username is required"
+					validatorMessage="UserName should be of maximum length 20 chars">
+					<f:validateLength maximum="20"></f:validateLength>
+					<f:ajax event="blur" listener="#{userBean.searchByUsername()}"
+						render="signupButton usernamegrowl" />
+				</p:inputText>
+				<p:message id="usernamemessage" for="username"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.password}" value="Password" />
+				<p:password styleClass="input" id="password"
+					value="#{userBean.password}" label="Password " required="true"
+					requiredMessage="Password is required"
+					validatorMessage="Password should be of length from 8 to 20 chars">
+					<f:validateLength minimum="8" maximum="20"></f:validateLength>
+				</p:password>
+				<p:message for="password"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.email}" value="Email" />
+				<p:inputText styleClass="input" id="email" value="#{userBean.email}"
+					label="Email" required="true" requiredMessage="Email is required"
+					validatorMessage="Invalid email format">
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"></f:validateRegex>
+					<f:ajax event="blur" listener="#{userBean.searchByEmail()}"
+						render="signupButton usernamegrowl" />
+
+				</p:inputText>
+				<p:message for="email"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.phone}" value="Phone Number" />
+				<p:inputText styleClass="input" id="phone" value="#{userBean.phone}"
+					label="Phone Number" required="true"
+					requiredMessage="Phone is required"
+					validatorMessage="Invalid Phone Number">
+					<f:validateLength minimum="8" maximum="8"></f:validateLength>
+					<f:validateRegex pattern="^[0-9]+" />
+				</p:inputText>
+				<p:message for="phone"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.mobilePhone}"
+					value="Mobile Phone Number" />
+				<p:inputText styleClass="input" id="mPhone"
+					value="#{userBean.mobilePhone}" label="Mobile Phone Number"
+					required="true" requiredMessage="Phone is required"
+					validatorMessage="Invalid Phone Number">
+					<f:validateLength minimum="8" maximum="8"></f:validateLength>
+					<f:validateRegex pattern="^[0-9]+" />
+				</p:inputText>
+				<p:message for="mPhone"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.birthDate}" value="Birthday " />
+				<p:calendar size="9" id="date" styleClass="input" required="true"
+					requiredMessage="Birth date is required"
+					value="#{userBean.birthDate}" pattern="yyyy-MM-dd">
+				</p:calendar>
+				<p:message for="date"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.adress}" value="Adress" />
+				<p:inputTextarea styleClass="input" id="adress"
+					value="#{userBean.adress}" label="Adress" required="true"
+					requiredMessage="Adress is required" />
+				<p:message for="adress"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.cin}" value="Cin" />
+				<p:inputText styleClass="input" id="cin" value="#{userBean.cin}"
+					label="Cin" required="true" requiredMessage="Cin is required"
+					validatorMessage="Ivalid CIN">
+					<f:validateLength minimum="8" maximum="8"></f:validateLength>
+					<f:validateRegex pattern="[0-9]+" />
+					<f:ajax event="blur" listener="#{userBean.searchBycin()}"
+						render="signupButton usernamegrowl" />
+
+				</p:inputText>
+				<p:message for="cin"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.gender}" value="Gender" />
+				<p:selectOneRadio id="gender" required="true"
+					requiredMessage="Gender is required" Label="Gender"
+					value="#{userBean.gender}" for="#{userBean.gender}">
+					<f:selectItem itemLabel="Male" itemValue="M" />
+					<f:selectItem itemLabel="Female" itemValue="F" />
+				</p:selectOneRadio>
+				<p:message for="gender"></p:message>
+				<br />
+
+				<h:outputLabel for="#{userBean.confidentialCode}"
+					value="Confidential Code" />
+
+				<p:inputText styleClass="input" id="cc"
+					value="#{userBean.confidentialCode}" label="Confidential Code"
+					required="true" requiredMessage="Confidential Code is required"
+					validatorMessage="Invalid Confidential Code ">
+					<f:ajax event="blur" listener="#{userBean.searchByCC()}"
+						render="signupButton usernamegrowl" />
+
+				</p:inputText>
+				<p:message for="cc"></p:message>
+				<br />
+
+				<p:commandButton id="signupButton" value="SignUp"
+					styleClass="button" icon="fa fa-user-plus"
+					action="#{userBean.persistUser()}" ajax="false"
+					disabled="#{userBean.message}"></p:commandButton>
+				<p:button outcome="index" styleClass="button" icon="fa fa-undo"
+					value="login"></p:button>
+
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+
+</h:body>
+</html>
