@@ -8,5 +8,12 @@
 
 .button {
     margin-left: 80px;
+}
 
+.centered {
+position: absolute;
+height: 100px;
+top: 0;
+bottom: 0;
+margin:auto;
 }

@@ -1,26 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
-
-<h:head>
-	<title>Signup</title>
-	<link type="text/css" rel="stylesheet" href="Assets/css/style.css"></link>
-</h:head>
-<h:body>
-
-	<h:form id="signupform">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="index.xhtml">
+	 <ui:define name="css">
+      <h:outputStylesheet name="../Assets/css/style.css" library="styles"/>
+   </ui:define>
+<ui:define name="content">
+	<h:form id="editprofile">
 		<p:growl id="usernamegrowl" life="20000" />
 
-		<p:panel id="panel" header="Signup"
-			style="width: 600px; margin: 100px auto;">
+		<p:panel id="panel" header="Profile"
+			style="width: 600px; margin: 20px auto;">
 			<h:panelGrid columns="2" layout="grid">
-			
+
 				<h:outputLabel for="#{userBean.name}" value="First Name" />
 				<p:inputText styleClass="input" id="name" value="#{userBean.name}"
 					label="First Name" required="true"
@@ -102,7 +98,7 @@
 				<br />
 
 				<h:outputLabel for="#{userBean.birthDate}" value="Birthday " />
-				<p:calendar  size="10" id="date" styleClass="input" required="true"
+				<p:calendar size="10" id="date" styleClass="input" required="true"
 					requiredMessage="Birth date is required"
 					value="#{userBean.birthDate}" pattern="yyyy-MM-dd">
 				</p:calendar>
@@ -153,16 +149,16 @@
 				<p:message for="cc"></p:message>
 				<br />
 
-				<p:commandButton id="signupButton" value="SignUp"
-					styleClass="button" icon="fa fa-user-plus"
-					action="#{userBean.persistUser()}" ajax="false"
+				<p:commandButton id="signupButton" value="Save"
+					styleClass="button" icon="fa fa-floppy-o"
+					action="#{userBean.update()}" ajax="false"
 					disabled="#{userBean.message}"></p:commandButton>
 				<p:button outcome="index" styleClass="button" icon="fa fa-undo"
-					value="login"></p:button>
+					value="Cancel"></p:button>
 
 			</h:panelGrid>
 		</p:panel>
 	</h:form>
+	</ui:define>
 
-</h:body>
-</html>
+</ui:composition>

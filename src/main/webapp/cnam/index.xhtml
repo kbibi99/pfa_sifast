@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Login</title>
+	<link type="text/css" rel="stylesheet" href="../Assets/css/style.css"></link>
+</h:head>
+<h:body>
+
+	<p:layout fullPage="true">
+
+		<h:form>
+			<p:confirmDialog message="Are you sure to logout ?" header="Logout"
+				severity="alert" widgetVar="cd">
+				<p:commandButton value="Yes" actionListener="#{userBean.logout()}"
+					oncomplete="PF('cd').hide()" ajax="false" />
+				<p:commandButton value="Not" onclick="PF('cd').hide();"
+					type="button" ajax="false" />
+			</p:confirmDialog>
+		</h:form>
+		<p:layoutUnit position="west" size="300" header="Menu"
+			resizable="true" closable="true" collapsible="true">
+			<h:form>
+				<p:growl autoUpdate="true" />
+				<p:panelMenu>
+					<p:submenu label="#{userBean.username}" style="width:290px">
+						<p:menuitem value="Profile" outcome="profile" icon="fa fa-user" />
+						<p:menuitem value="Logout" onclick="PF('cd').show()"
+							icon="fa fa-sign-out"></p:menuitem>
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" style="border:0px;">
+
+			<ui:insert name="content">
+				<h:outputStylesheet name="Assets/css/style.css" />
+			</ui:insert>
+
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

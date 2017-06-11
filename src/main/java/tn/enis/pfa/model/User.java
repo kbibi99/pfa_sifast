@@ -13,7 +13,6 @@ import java.util.Date;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "user")
 public class User implements java.io.Serializable {
@@ -26,24 +25,15 @@ public class User implements java.io.Serializable {
 	private String email;
 	private String phone;
 	private String mobilePhone;
-	private Date birthDate; 
+	private Date birthDate;
 	private String adress;
 	private String cin;
-	private String  gender;
+	private String gender;
 	private String confidentialCode;
-	
-	
 
+	
 	public User() {
 	}
-	
-	
-
-
-
-
-
-
 
 	public User(Integer id, String name, String surname, String username, String password, String email, String phone,
 			String mobilePhone, Date birthDate, String adress, String cin, String gender, String confidentialCode) {
@@ -62,9 +52,6 @@ public class User implements java.io.Serializable {
 		this.confidentialCode = confidentialCode;
 	}
 
-
-
-
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -76,7 +63,7 @@ public class User implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "name", length = 20 , nullable = false)
+	@Column(name = "name", length = 20, nullable = false)
 	public String getName() {
 		return this.name;
 	}
@@ -85,7 +72,7 @@ public class User implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "surname", length = 20 , nullable = false)
+	@Column(name = "surname", length = 20, nullable = false)
 	public String getSurname() {
 		return this.surname;
 	}
@@ -93,8 +80,8 @@ public class User implements java.io.Serializable {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-    
-	@Column(name = "password" , length = 50 , nullable = false)
+
+	@Column(name = "password", length = 50, nullable = false)
 	public String getPassword() {
 		return password;
 	}
@@ -103,107 +90,83 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-
-	@Column(name = "username", unique = true , length = 50 , nullable = false)
+	@Column(name = "username", unique = true, length = 50, nullable = false)
 	public String getUsername() {
 		return username;
 	}
-
-
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-
-	@Column(name = "email" , unique = true ,length = 50 , nullable = false)
+	@Column(name = "email", unique = true, length = 50, nullable = false)
 	public String getEmail() {
 		return email;
 	}
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
-	@Column(name = "phone" , length = 8 , nullable = false)
+	@Column(name = "phone", length = 8, nullable = false)
 
 	public String getPhone() {
 		return phone;
 	}
 
-
-
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-
-	@Column(name = "mobilephone" , length = 50 , nullable = true)
+	@Column(name = "mobilephone", length = 50, nullable = true)
 
 	public String getMobilePhone() {
 		return mobilePhone;
 	}
 
-
-
 	public void setMobilePhone(String mobilePhone) {
 		this.mobilePhone = mobilePhone;
 	}
-	
 
-	@Column(name = "birthdate" , length = 50 , nullable = false)
+	@Column(name = "birthdate", length = 50, nullable = false)
 	public Date getBirthDate() {
 		return birthDate;
 	}
-
-
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
-
-	@Column(name = "adress" , length = 250 , nullable = false)
+	@Column(name = "adress", length = 250, nullable = false)
 
 	public String getAdress() {
 		return adress;
 	}
 
-
-
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
 
-
-	@Column(name = "cin" , length = 8 , nullable = false)
+	@Column(name = "cin", length = 8, nullable = false)
 	public String getCin() {
 		return cin;
 	}
-
-
 
 	public void setCin(String cin) {
 		this.cin = cin;
 	}
 
-
-	@Column(name = "gender" , length = 1 , nullable = false)
+	@Column(name = "gender", length = 1, nullable = false)
 
 	public String getGender() {
 		return gender;
 	}
 
-
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
-
-	@Column(name = "confidetialcode" , length = 20 , nullable = false)
+	@Column(name = "confidetialcode", length = 20, nullable = false)
 	public String getConfidentialCode() {
 		return confidentialCode;
 	}
@@ -211,11 +174,5 @@ public class User implements java.io.Serializable {
 	public void setConfidentialCode(String confidentialCode) {
 		this.confidentialCode = confidentialCode;
 	}
-	
-	
-	
-	
-	
-	
 
 }

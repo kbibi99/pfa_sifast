@@ -9,7 +9,7 @@
 	
 	<context-param>
 	<param-name>primefaces.THEME</param-name>
-	<param-value>cupertino</param-value>
+	<param-value>start</param-value>
 	</context-param>
 	<context-param>
 		<param-name>primefaces.FONT_AWESOME</param-name>
@@ -21,29 +21,14 @@
       <context-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>
-      /WEB-INF/applicationContext.xml
+      /WEB-INF/applicationContext.xml 
       </param-value>
    </context-param>
    
-   
-   
-
-   
+    
 
    <!-- The Bootstrap listener to start up and shut down Spring's root WebApplicationContext. It is registered to Servlet Container -->
-   <listener>
-  <listener-class>
-   org.springframework.web.context.ContextLoaderListener
-  </listener-class>
-   </listener>
-   <listener>
-  <listener-class>
-   org.springframework.web.context.request.RequestContextListener
-  </listener-class>
-   </listener>
-
-
-
+  
 
 	<!-- Change to "Production" when you are ready to deploy -->
 	<context-param>
@@ -77,5 +62,33 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
+	
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+	
+	 <listener>
+  <listener-class>
+   org.springframework.web.context.ContextLoaderListener
+  </listener-class>
+   </listener>
+   <listener>
+  <listener-class>
+   org.springframework.web.context.request.RequestContextListener
+  </listener-class>
+   </listener>
+   <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>tn.enis.pfa.config.LoginFilter</filter-class>
+    </filter>
+    <!-- Set the login filter to secure all the pages in the /cnam/* path of the application  -->
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/cnam/*</url-pattern>
+    </filter-mapping>
+
+
 
 </web-app>

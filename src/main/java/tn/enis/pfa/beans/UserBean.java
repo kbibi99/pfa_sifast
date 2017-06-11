@@ -8,15 +8,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-
-import org.primefaces.context.RequestContext;
 
 import tn.enis.pfa.model.User;
 import tn.enis.pfa.service.UserService;
 
-@ManagedBean
+@ManagedBean(name="userBean")
 @SessionScoped
 public class UserBean implements Serializable {
 
@@ -37,6 +35,7 @@ public class UserBean implements Serializable {
 	private String gender;
 	private String confidentialCode;
 	private boolean message = false;
+	private boolean loggedIn;
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -154,6 +153,14 @@ public class UserBean implements Serializable {
 		this.message = message;
 	}
 
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
+
 	public void persistUser() {
 		User user = new User();
 		user.setName(getName());
@@ -171,7 +178,7 @@ public class UserBean implements Serializable {
 
 		userService.persistUser(user);
 		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("success.xhtml?faces-redirect=true");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("cnam/index.xhtml?faces-redirect=true");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -182,7 +189,19 @@ public class UserBean implements Serializable {
 		User user = userService.login(getUsername(), getPassword());
 		if (user != null) {
 			try {
-				FacesContext.getCurrentInstance().getExternalContext().redirect("success.xhtml?faces-redirect=true");
+				setAdress(user.getAdress());
+				setBirthDate(user.getBirthDate());
+				setCin(user.getCin());
+				setConfidentialCode(user.getConfidentialCode());
+				setName(user.getName());
+				setEmail(user.getEmail());
+				setSurname(user.getSurname());
+				setGender(user.getGender());
+				setPhone(user.getPhone());
+				setMobilePhone(user.getMobilePhone());
+				setId(user.getId());
+				setLoggedIn(true);
+				FacesContext.getCurrentInstance().getExternalContext().redirect("cnam/index.xhtml?faces-redirect=true");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -196,7 +215,7 @@ public class UserBean implements Serializable {
 		User user = userService.findUserByUserName(getUsername());
 		if (user != null) {
 			FacesContext.getCurrentInstance().addMessage("usernamegrowl",
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "username is alredy used", ""));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "username is already used", ""));
 			setMessage(true);
 		} else
 			setMessage(false);
@@ -206,9 +225,9 @@ public class UserBean implements Serializable {
 		User user = userService.findUserByEmail(getEmail());
 		if (user != null) {
 			FacesContext.getCurrentInstance().addMessage("usernamegrowl",
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email is alredy used", ""));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email is already used", ""));
 			setMessage(true);
-		} else 
+		} else
 			setMessage(false);
 	}
 
@@ -216,9 +235,9 @@ public class UserBean implements Serializable {
 		User user = userService.findUserByCIN(getCin());
 		if (user != null) {
 			FacesContext.getCurrentInstance().addMessage("usernamegrowl",
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cin is alredy used", ""));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cin is already used", ""));
 			setMessage(true);
-		} else 
+		} else
 			setMessage(false);
 	}
 
@@ -226,10 +245,40 @@ public class UserBean implements Serializable {
 		User user = userService.findUserByConfidetialCode(getConfidentialCode());
 		if (user != null) {
 			FacesContext.getCurrentInstance().addMessage("usernamegrowl",
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Confidetial Code is alredy used", ""));
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Confidetial Code is already used", ""));
 			setMessage(true);
-		} else 
+		} else
 			setMessage(false);
+	}
+
+	public void update() {
+		User user = new User();
+		user.setName(getName());
+		user.setSurname(getSurname());
+		user.setUsername(getUsername());
+		user.setPassword(getPassword());
+		user.setCin(getCin());
+		user.setBirthDate(getBirthDate());
+		user.setGender(getGender());
+		user.setAdress(getAdress());
+		user.setConfidentialCode(getConfidentialCode());
+		user.setPhone(getPhone());
+		user.setMobilePhone(getMobilePhone());
+		user.setEmail(getEmail());
+		user.setId(getId());
+		userService.updateUser(user);
+		FacesContext.getCurrentInstance().addMessage("usernamegrowl",
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Account Informations Saved", ""));
+	}
+
+	public void logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		try {
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+			ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
